@@ -4,9 +4,9 @@ import com.vishnu.TicketBooking.dto.EventResponseDTO;
 import com.vishnu.TicketBooking.entity.Event;
 import com.vishnu.TicketBooking.mapper.EventMapper;
 import com.vishnu.TicketBooking.repository.EventRepository;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.scheduling.annotation.Async;
+//import org.springframework.cache.annotation.CacheEvict;
+//import org.springframework.cache.annotation.Cacheable;
+//import org.springframework.scheduling.annotation.Async;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
@@ -24,7 +24,7 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
-    @CacheEvict(value = "events", allEntries = true)
+//    @CacheEvict(value = "events", allEntries = true)
     public EventResponseDTO createEvent(Event event) {
 
         Event savedEvent = eventRepository.save(event);
@@ -32,7 +32,7 @@ public class EventService {
         return EventMapper.toDTO(savedEvent);
     }
 
-    @Cacheable("events")
+//    @Cacheable("events")
     public List<EventResponseDTO> getAllEvents() {
         return eventRepository.findAll()
                 .stream()
@@ -66,7 +66,7 @@ public class EventService {
                 Sort.by(sortBy)
         );
     }
-    @CacheEvict(value = "events", allEntries = true)
+//    @CacheEvict(value = "events", allEntries = true)
     public Event updateEvent(Long id, Event updatedEvent) {
 
         Event event = eventRepository.findById(id)
@@ -80,7 +80,7 @@ public class EventService {
 
         return eventRepository.save(event);
     }
-    @CacheEvict(value = "events", allEntries = true)
+//    @CacheEvict(value = "events", allEntries = true)
     public String deleteEvent(Long id) {
 
         Event event = eventRepository.findById(id)
