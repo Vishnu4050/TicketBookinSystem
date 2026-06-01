@@ -4,7 +4,7 @@ import com.vishnu.TicketBooking.service.EmailService;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class BookingConsumer {
 
     private final EmailService emailService;
@@ -15,10 +15,10 @@ public class BookingConsumer {
         this.emailService = emailService;
     }
 
-    @KafkaListener(
-            topics = "booking-topic",
-            groupId = "ticket-booking-group"
-    )
+//    @KafkaListener(
+//            topics = "booking-topic",
+//            groupId = "ticket-booking-group"
+//    )
     public void consume(
             BookingEvent event
     ) {
