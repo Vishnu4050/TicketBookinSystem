@@ -59,12 +59,12 @@ public class BookingService {
         booking.setStatus(BookingStatus.PENDING);
 
         Booking savedBooking = bookingRepository.save(booking);
-        bookingProducer.sendBookingEvent(
-                new BookingEvent(
-                        savedBooking.getUserEmail(),
-                        savedBooking.getEvent().getTitle()
-                )
-        );
+//        bookingProducer.sendBookingEvent(
+//                new BookingEvent(
+//                        savedBooking.getUserEmail(),
+//                        savedBooking.getEvent().getTitle()
+//                )
+//        );
 
         return BookingMapper.toDTO(savedBooking);
     }
