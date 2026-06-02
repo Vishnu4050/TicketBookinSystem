@@ -22,23 +22,22 @@ public class Event {
 
     private Double ticketPrice;
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     private String imageUrl;
+
+    public Event() {
+    }
+
+    public Event(Long id, String title, String location,
+                 String date, int totalSeats, int availableSeats, Double ticketPrice,String imageUrl) {
+        this.id = id;
+        this.title = title;
+        this.location = location;
+        this.date = date;
+        this.totalSeats = totalSeats;
+        this.availableSeats = availableSeats;
+        this.ticketPrice=ticketPrice;
+        this.imageUrl=imageUrl;
+    }
 
     public Double getTicketPrice() {
         return ticketPrice;
@@ -47,20 +46,12 @@ public class Event {
     public void setTicketPrice(Double ticketPrice) {
         this.ticketPrice = ticketPrice;
     }
-
-
-
-    public Event() {
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public Event(Long id, String title, String location,
-                 String date, int totalSeats, int availableSeats) {
-        this.id = id;
-        this.title = title;
-        this.location = location;
-        this.date = date;
-        this.totalSeats = totalSeats;
-        this.availableSeats = availableSeats;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Long getId() {
