@@ -48,7 +48,7 @@ public class Event {
         this.ticketPrice = ticketPrice;
     }
 
-    private String category;
+
 
     public Event() {
     }

@@ -21,11 +21,6 @@ public class EventResponseDTO {
 
 
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
 
     public EventResponseDTO(
             Long id,
@@ -45,6 +40,45 @@ public class EventResponseDTO {
         this.availableSeats = availableSeats;
         this.ticketPrice=ticketPrice;
         this.imageUrl=imageUrl;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Double getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(Double ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
+    }
+
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Long getId() {
