@@ -1,7 +1,7 @@
 package com.vishnu.TicketBooking.entity;
 
 import jakarta.persistence.*;
-
+import jakarta.persistence.JoinColumn;
 import java.time.LocalDateTime;
 
 @Entity

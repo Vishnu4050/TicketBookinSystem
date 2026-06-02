@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface BookingRepository
         extends JpaRepository<Booking, Long> {
+
     List<Booking> findByUserEmail(String userEmail);
+
+    void deleteByEventId(Long eventId);
 }

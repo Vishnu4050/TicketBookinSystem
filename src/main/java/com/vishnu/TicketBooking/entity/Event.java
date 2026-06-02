@@ -2,6 +2,7 @@ package com.vishnu.TicketBooking.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,7 +32,7 @@ public class Event {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private List<Booking> bookings;
+    private List<Booking> bookings = new ArrayList<>();
 
     public Event() {
     }

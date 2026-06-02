@@ -3,6 +3,7 @@ package com.vishnu.TicketBooking.service;
 import com.vishnu.TicketBooking.dto.EventResponseDTO;
 import com.vishnu.TicketBooking.entity.Event;
 import com.vishnu.TicketBooking.mapper.EventMapper;
+import com.vishnu.TicketBooking.repository.BookingRepository;
 import com.vishnu.TicketBooking.repository.EventRepository;
 //import org.springframework.cache.annotation.CacheEvict;
 //import org.springframework.cache.annotation.Cacheable;
@@ -19,9 +20,11 @@ import java.util.List;
 public class EventService {
 
     private final EventRepository eventRepository;
+    private final BookingRepository bookingRepository;
 
-    public EventService(EventRepository eventRepository) {
+    public EventService(EventRepository eventRepository,BookingRepository bookingRepository) {
         this.eventRepository = eventRepository;
+        this.bookingRepository=bookingRepository;
     }
 
 //    @CacheEvict(value = "events", allEntries = true)
@@ -83,14 +86,18 @@ public class EventService {
         return eventRepository.save(event);
     }
 //    @CacheEvict(value = "events", allEntries = true)
-    public String deleteEvent(Long id) {
+public String deleteEvent(Long id) {
 
-        Event event = eventRepository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Event not found"));
+    Event event = eventRepository.findById(id)
+            .orElseThrow(() ->
+                    new RuntimeException("Event not found"));
 
-        eventRepository.delete(event);
+    // First delete all bookings connected to event
+    bookingRepository.deleteByEventId(id);
 
-        return "Event deleted successfully";
-    }
+    // Then delete event
+    eventRepository.delete(event);
+
+    return "Event deleted successfully";
+}
 }
