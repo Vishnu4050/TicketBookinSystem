@@ -5,6 +5,7 @@ import com.vishnu.TicketBooking.entity.Event;
 import com.vishnu.TicketBooking.mapper.EventMapper;
 import com.vishnu.TicketBooking.repository.BookingRepository;
 import com.vishnu.TicketBooking.repository.EventRepository;
+import com.vishnu.TicketBooking.repository.PaymentRepository;
 //import org.springframework.cache.annotation.CacheEvict;
 //import org.springframework.cache.annotation.Cacheable;
 //import org.springframework.scheduling.annotation.Async;
@@ -22,10 +23,12 @@ public class EventService {
 
     private final EventRepository eventRepository;
     private final BookingRepository bookingRepository;
+    private final PaymentRepository paymentRepository;
 
-    public EventService(EventRepository eventRepository,BookingRepository bookingRepository) {
+    public EventService(EventRepository eventRepository,BookingRepository bookingRepository,PaymentRepository paymentRepository) {
         this.eventRepository = eventRepository;
         this.bookingRepository=bookingRepository;
+        this.paymentRepository=paymentRepository;
     }
 
 //    @CacheEvict(value = "events", allEntries = true)
@@ -87,17 +90,20 @@ public class EventService {
         return eventRepository.save(event);
     }
 //    @CacheEvict(value = "events", allEntries = true)
-    @Transactional
+@Transactional
 public String deleteEvent(Long id) {
 
     Event event = eventRepository.findById(id)
             .orElseThrow(() ->
                     new RuntimeException("Event not found"));
 
-    // First delete all bookings connected to event
+    // First delete payments
+    paymentRepository.deleteByEventId(id);
+
+    // Then delete bookings
     bookingRepository.deleteByEventId(id);
 
-    // Then delete event
+    // Finally delete event
     eventRepository.delete(event);
 
     return "Event deleted successfully";
