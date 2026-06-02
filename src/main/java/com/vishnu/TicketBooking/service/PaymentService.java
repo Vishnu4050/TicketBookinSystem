@@ -43,7 +43,7 @@ public class PaymentService {
         payment.setBooking(booking);
 
         payment.setAmount(
-                booking.getSeatsBooked() * 500
+                booking.getSeatsBooked() * booking.getEvent().getTicketPrice()
         );
 
         payment.setTransactionId(

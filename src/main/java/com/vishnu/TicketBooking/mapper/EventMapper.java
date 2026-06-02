@@ -13,7 +13,9 @@ public class EventMapper {
                 event.getLocation(),
                 event.getDate().toString(),
                 event.getTotalSeats(),
-                event.getAvailableSeats()
+                event.getAvailableSeats(),
+                event.setTicketPrice(event.getTicketPrice()),
+        event.setImageUrl(event.getImageUrl())
         );
     }
 }

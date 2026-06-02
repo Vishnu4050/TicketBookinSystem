@@ -16,13 +16,26 @@ public class EventResponseDTO {
 
     private int availableSeats;
 
+    private Double ticketPrice;
+    private String imageUrl;
+
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+
     public EventResponseDTO(
             Long id,
             String title,
             String location,
             String date,
             int totalSeats,
-            int availableSeats
+            int availableSeats,
+            Double ticketPrice,
+            String imageUrl
     ) {
         this.id = id;
         this.title = title;
@@ -30,6 +43,8 @@ public class EventResponseDTO {
         this.date = date;
         this.totalSeats = totalSeats;
         this.availableSeats = availableSeats;
+        this.ticketPrice=ticketPrice;
+        this.imageUrl=imageUrl;
     }
 
     public Long getId() {
