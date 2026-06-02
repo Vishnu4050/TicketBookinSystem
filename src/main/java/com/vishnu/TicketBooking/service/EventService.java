@@ -121,4 +121,13 @@ public String deleteEvent(Long id) {
 
     return "Event deleted successfully";
 }
+    public EventResponseDTO getEventById(Long id) {
+
+        Event event = eventRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Event not found"));
+
+        return EventMapper.toDTO(event);
+
+    }
 }

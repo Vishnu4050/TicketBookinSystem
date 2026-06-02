@@ -69,4 +69,12 @@ public class EventController {
                 eventService.deleteEvent(id)
         );
     }
+    @GetMapping("/{id}")
+    public EventResponseDTO getEventById(
+            @PathVariable Long id
+    ) {
+
+        return eventService.getEventById(id);
+
+    }
 }
