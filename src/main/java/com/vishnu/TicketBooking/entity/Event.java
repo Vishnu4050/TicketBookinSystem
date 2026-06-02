@@ -27,6 +27,8 @@ public class Event {
 
     private String imageUrl;
 
+    private boolean deleted = false;
+
     @OneToMany(
             mappedBy = "event",
             cascade = CascadeType.ALL,
@@ -47,6 +49,14 @@ public class Event {
         this.availableSeats = availableSeats;
         this.ticketPrice=ticketPrice;
         this.imageUrl=imageUrl;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public Double getTicketPrice() {

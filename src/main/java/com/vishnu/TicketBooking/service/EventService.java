@@ -90,6 +90,24 @@ public class EventService {
         return eventRepository.save(event);
     }
 //    @CacheEvict(value = "events", allEntries = true)
+//@Transactional
+//public String deleteEvent(Long id) {
+//
+//    Event event = eventRepository.findById(id)
+//            .orElseThrow(() ->
+//                    new RuntimeException("Event not found"));
+//
+//    // First delete payments
+//    paymentRepository.deleteByEventId(id);
+//
+//    // Then delete bookings
+//    bookingRepository.deleteByEventId(id);
+//
+//    // Finally delete event
+//    eventRepository.delete(event);
+//
+//    return "Event deleted successfully";
+//}
 @Transactional
 public String deleteEvent(Long id) {
 
@@ -97,14 +115,9 @@ public String deleteEvent(Long id) {
             .orElseThrow(() ->
                     new RuntimeException("Event not found"));
 
-    // First delete payments
-    paymentRepository.deleteByEventId(id);
+    event.setDeleted(true);
 
-    // Then delete bookings
-    bookingRepository.deleteByEventId(id);
-
-    // Finally delete event
-    eventRepository.delete(event);
+    eventRepository.save(event);
 
     return "Event deleted successfully";
 }
