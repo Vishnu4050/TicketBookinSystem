@@ -2,6 +2,8 @@ package com.vishnu.TicketBooking.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "events")
 public class Event {
@@ -23,6 +25,13 @@ public class Event {
     private Double ticketPrice;
 
     private String imageUrl;
+
+    @OneToMany(
+            mappedBy = "event",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Booking> bookings;
 
     public Event() {
     }

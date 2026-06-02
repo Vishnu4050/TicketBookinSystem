@@ -77,6 +77,8 @@ public class EventService {
         event.setLocation(updatedEvent.getLocation());
         event.setDate(updatedEvent.getDate());
         event.setAvailableSeats(updatedEvent.getAvailableSeats());
+        event.setTicketPrice(updatedEvent.getTicketPrice());
+        event.setImageUrl(updatedEvent.getImageUrl());
 
         return eventRepository.save(event);
     }
