@@ -89,19 +89,24 @@ public class UserService {
                 .orElse(null);
 
         if (user == null) {
-            return new LoginResponseDTO("User not found");
+            throw new RuntimeException("User not found");
         }
 
         if (!passwordEncoder.matches(
                 dto.getPassword(),
-                user.getPassword())) {
-            return new LoginResponseDTO("Invalid password");
+                user.getPassword()
+        )) {
+
+            throw new RuntimeException("Invalid password");
         }
 
         String token = jwtService.generateToken(
                 user.getEmail()
         );
 
-        return new LoginResponseDTO(token);
+        return new LoginResponseDTO(
+                token,
+                user.getRole().name()
+        );
     }
 }
