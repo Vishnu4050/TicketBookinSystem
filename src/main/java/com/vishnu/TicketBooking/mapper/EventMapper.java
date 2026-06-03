@@ -11,7 +11,7 @@ public class EventMapper {
                 event.getId(),
                 event.getTitle(),
                 event.getLocation(),
-                event.getDate().toString(),
+                event.getDate() != null ? event.getDate().toString() : null,
                 event.getTotalSeats(),
                 event.getAvailableSeats(),
                 event.getTicketPrice(),

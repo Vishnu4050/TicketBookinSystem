@@ -41,7 +41,7 @@ public class EventService {
 
 //    @Cacheable("events")
     public List<EventResponseDTO> getAllEvents() {
-        return eventRepository.findByDeletedFalse()
+        return eventRepository.findAllByIsDeletedFalseOrderByUpdatedAtDesc()
                 .stream()
                 .map(EventMapper::toDTO)
                 .toList();

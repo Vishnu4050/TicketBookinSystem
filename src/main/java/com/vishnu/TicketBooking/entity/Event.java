@@ -1,7 +1,9 @@
 package com.vishnu.TicketBooking.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +30,9 @@ public class Event {
     private String imageUrl;
 
     private boolean deleted = false;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
     @OneToMany(
             mappedBy = "event",
