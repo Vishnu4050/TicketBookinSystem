@@ -82,6 +82,8 @@ public class SecurityConfig {
 
                         .requestMatchers(HttpMethod.DELETE, "/events/**")
                         .hasRole("ADMIN")
+                        .requestMatchers("/payments/**")
+                        .hasAnyRole("USER", "ADMIN")
                         .requestMatchers(
                                 "/auth/**",
                                 "/users/**",
@@ -118,9 +120,16 @@ public class SecurityConfig {
                 "OPTIONS"
         ));
 
-        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowedHeaders(List.of(
+                "Authorization",
+                "Content-Type",
+                "Accept"
+        ));
 
         configuration.setAllowCredentials(true);
+        configuration.setExposedHeaders(List.of(
+                "Authorization"
+        ));
 
         UrlBasedCorsConfigurationSource source =
                 new UrlBasedCorsConfigurationSource();
