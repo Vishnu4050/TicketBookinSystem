@@ -62,7 +62,7 @@ public class SecurityConfig {
                         .hasAnyRole("USER", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/events")
                         .hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, "/events").permitAll()
+
                         .requestMatchers(HttpMethod.GET, "/events")
                         .hasAnyRole("USER", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/bookings")
