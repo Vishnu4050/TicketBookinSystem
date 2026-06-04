@@ -3,7 +3,7 @@ package com.vishnu.TicketBooking.dto;
 import java.time.LocalDate;
 import java.io.Serializable;
 
-public class EventResponseDTO {
+public class EventResponseDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
