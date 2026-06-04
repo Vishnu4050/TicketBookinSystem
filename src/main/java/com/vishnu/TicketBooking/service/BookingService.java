@@ -7,6 +7,8 @@ import com.vishnu.TicketBooking.mapper.BookingMapper;
 import com.vishnu.TicketBooking.repository.BookingRepository;
 import com.vishnu.TicketBooking.repository.EventRepository;
 import com.vishnu.TicketBooking.repository.PaymentRepository;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import com.vishnu.TicketBooking.kafka.BookingProducer;
 import com.vishnu.TicketBooking.kafka.BookingEvent;
@@ -30,7 +32,7 @@ public class BookingService {
         this.paymentRepository=paymentRepository;
         this.bookingProducer = bookingProducer;
     }
-
+    @CacheEvict(value = "events", allEntries = true)
     public BookingResponseDTO bookTicket(Long eventId, BookingRequestDTO dto,String userEmail){
 
         Event event = eventRepository.findById(eventId)
@@ -68,6 +70,7 @@ public class BookingService {
 
         return BookingMapper.toDTO(savedBooking);
     }
+    @Cacheable("events")
     public List<BookingResponseDTO> getMyBookings(String email) {
 
         List<Booking> bookings =
@@ -77,6 +80,7 @@ public class BookingService {
                 .map(BookingMapper::toDTO)
                 .toList();
     }
+    @CacheEvict(value = "events", allEntries = true)
     public String cancelBooking(Long bookingId) {
 
         Booking booking = bookingRepository.findById(bookingId)

@@ -1,10 +1,10 @@
 package com.vishnu.TicketBooking.dto;
 
 import com.vishnu.TicketBooking.entity.BookingStatus;
-
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class BookingResponseDTO {
+public class BookingResponseDTO implements Serializable{
 
     private Long id;
     private String userEmail;
