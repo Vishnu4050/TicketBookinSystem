@@ -32,7 +32,7 @@ public class BookingService {
         this.paymentRepository=paymentRepository;
         this.bookingProducer = bookingProducer;
     }
-    @CacheEvict(value = "events", allEntries = true)
+    @CacheEvict(value = "bookings", allEntries = true)
     public BookingResponseDTO bookTicket(Long eventId, BookingRequestDTO dto,String userEmail){
 
         Event event = eventRepository.findById(eventId)
@@ -58,6 +58,11 @@ public class BookingService {
 
         booking.setEvent(event);
 
+        booking.setTotalPrice(
+                dto.getSeats() *
+                        event.getTicketPrice()
+        );
+
         booking.setStatus(BookingStatus.PENDING);
 
         Booking savedBooking = bookingRepository.save(booking);
@@ -70,7 +75,7 @@ public class BookingService {
 
         return BookingMapper.toDTO(savedBooking);
     }
-    @Cacheable("events")
+    @Cacheable("bookings")
     public List<BookingResponseDTO> getMyBookings(String email) {
 
         List<Booking> bookings =
@@ -80,7 +85,7 @@ public class BookingService {
                 .map(BookingMapper::toDTO)
                 .toList();
     }
-    @CacheEvict(value = "events", allEntries = true)
+    @CacheEvict(value = "bookings", allEntries = true)
     public String cancelBooking(Long bookingId) {
 
         Booking booking = bookingRepository.findById(bookingId)

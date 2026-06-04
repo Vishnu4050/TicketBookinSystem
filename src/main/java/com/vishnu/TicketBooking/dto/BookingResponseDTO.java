@@ -13,6 +13,7 @@ public class BookingResponseDTO implements Serializable{
     private int seatsBooked;
     private BookingStatus status;
     private LocalDateTime bookedAt;
+    private Double totalPrice;
 
     public BookingResponseDTO() {
     }
@@ -24,7 +25,8 @@ public class BookingResponseDTO implements Serializable{
             String location,
             int seatsBooked,
             BookingStatus status,
-            LocalDateTime bookedAt
+            LocalDateTime bookedAt,
+            Double totalPrice
     ) {
         this.id = id;
         this.userEmail = userEmail;
@@ -33,6 +35,15 @@ public class BookingResponseDTO implements Serializable{
         this.seatsBooked = seatsBooked;
         this.status = status;
         this.bookedAt = bookedAt;
+        this.totalPrice=totalPrice;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Long getId() {

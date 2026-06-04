@@ -16,7 +16,8 @@ public class BookingMapper {
                 booking.getEvent().getLocation(),
                 booking.getSeatsBooked(),
                 booking.getStatus(),
-                booking.getBookedAt()
+                booking.getBookedAt(),
+                booking.getTotalPrice()
         );
     }
 }

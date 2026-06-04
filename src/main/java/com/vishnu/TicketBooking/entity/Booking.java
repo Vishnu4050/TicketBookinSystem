@@ -26,6 +26,8 @@ public class Booking {
 
     private int seatsBooked;
 
+    private Double totalPrice;
+
     public BookingStatus getStatus() {
         return status;
     }
@@ -41,15 +43,25 @@ public class Booking {
     @Enumerated(EnumType.STRING)
     private BookingStatus status;
 
+
+
     public Booking() {
     }
 
     public Booking(Long id, String userEmail,
-                   int seatsBooked, Event event) {
+                   int seatsBooked, Event event,Double totalPrice) {
         this.id = id;
         this.userEmail = userEmail;
         this.seatsBooked = seatsBooked;
         this.event = event;
+        this.totalPrice=totalPrice;
+    }
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Long getId() {
@@ -83,4 +95,6 @@ public class Booking {
     public void setEvent(Event event) {
         this.event = event;
     }
+
+
 }

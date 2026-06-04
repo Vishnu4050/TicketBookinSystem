@@ -6,12 +6,23 @@ public class BookingRequestDTO {
 
     private int seats;
 
+    private double totalPrice;
+
     public BookingRequestDTO() {
     }
 
-    public BookingRequestDTO(Long eventId, int seats) {
+    public BookingRequestDTO(Long eventId, int seats,double totalPrice) {
         this.eventId = eventId;
         this.seats = seats;
+        this.totalPrice=totalPrice;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Long getEventId() {
@@ -29,4 +40,5 @@ public class BookingRequestDTO {
     public void setSeats(int seats) {
         this.seats = seats;
     }
+
 }
