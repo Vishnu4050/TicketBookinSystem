@@ -43,6 +43,8 @@ public class EventResponseDTO implements Serializable {
         this.ticketPrice=ticketPrice;
         this.imageUrl=imageUrl;
     }
+
+    public EventResponseDTO(){}
     public void setId(Long id) {
         this.id = id;
     }
