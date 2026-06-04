@@ -1,8 +1,10 @@
 package com.vishnu.TicketBooking.dto;
 
 import java.time.LocalDate;
+import java.io.Serializable;
 
 public class EventResponseDTO {
+    private static final long serialVersionUID = 1L;
 
     private Long id;
 
