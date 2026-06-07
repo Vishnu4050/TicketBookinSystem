@@ -43,9 +43,9 @@ public class EmailService {
             message.setSubject(subject);
 
             message.setText(body);
-
+            System.out.println("BEFORE SEND");
             mailSender.send(message);
-
+            System.out.println("AFTER SEND");
             logger.info("Email sent successfully");
 
         } catch (Exception e) {
