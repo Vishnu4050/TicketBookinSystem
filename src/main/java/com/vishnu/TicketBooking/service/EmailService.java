@@ -22,7 +22,7 @@ public class EmailService {
         this.mailSender = mailSender;
     }
 
-    @Async
+//    @Async
     public void sendEmail(
             String to,
             String subject,
