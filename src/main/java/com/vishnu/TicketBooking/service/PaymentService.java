@@ -80,6 +80,9 @@ public class PaymentService {
 
                         + "\n\nThank you for booking with us!";
 
+        System.out.println("ABOUT TO SEND EMAIL");
+        System.out.println("EMAIL = " + booking.getUserEmail());
+
         emailService.sendEmail(
                 booking.getUserEmail(),
                 "Ticket Booking Confirmed 🎟️",

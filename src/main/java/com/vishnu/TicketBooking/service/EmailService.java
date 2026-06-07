@@ -28,8 +28,10 @@ public class EmailService {
             String subject,
             String body
     ) {
+        System.out.println("EMAIL METHOD CALLED");
 
         try {
+            System.out.println("EMAIL METHOD CALLED");
 
             logger.info("Sending email...");
 
