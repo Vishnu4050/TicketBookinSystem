@@ -37,6 +37,7 @@ public class EmailService {
 
             SimpleMailMessage message =
                     new SimpleMailMessage();
+            message.setFrom("newidagent@gmail.com");
 
             message.setTo(to);
 
@@ -49,7 +50,7 @@ public class EmailService {
             logger.info("Email sent successfully");
 
         } catch (Exception e) {
-
+            System.out.println("EMAIL ERROR OCCURRED");
             logger.error("Email sending failed", e);
             e.printStackTrace();
         }
