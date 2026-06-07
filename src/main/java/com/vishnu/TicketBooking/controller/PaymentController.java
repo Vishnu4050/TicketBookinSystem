@@ -23,9 +23,9 @@ public class PaymentController {
 
     @PostMapping("/{bookingId}")
     public Payment makePayment(
-            @PathVariable Long bookingId
-    ) {
-
+            @PathVariable Long bookingId) {
+        System.out.println("PAYMENT CONTROLLER HIT");
+        System.out.println("BOOKING ID = " + bookingId);
         return paymentService.makePayment(
                 bookingId
         );
